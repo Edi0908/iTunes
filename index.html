@@ -59,6 +59,10 @@
 						<p class="video-time video-time__passed">00:00</p>
 						<input type="range" class="video-progress" min="0" max="100" step="0.1" value="0">
 						<p class="video-time video-time__total">00:00</p>
+						<span class="fa fa-volume-up video-icon volume-up"></span>
+						<input type="range" class="video-volume" min="0" max="100" step="1" value="100">
+						<span class="fa fa-volume-off volume-mute video-icon"></span>
+						<span class="fa fa-external-link video-fullscreen video-icon"></span>
 					</nav>
 				</div>
 			</div>
@@ -86,6 +90,9 @@
 						<div class="audio-progress__timing"></div>
 					</div>
 					<span class="audio-time audio-time__total">00:00</span>
+					<span class="fa fa-volume-up audio-icon volume-up"></span>
+					<input type="range" class="audio-volume" min="0" max="100" step="1" value="100">
+					<span class="fa fa-volume-off audio-mute"></span>
 				</nav>
 			</footer>
 		</article>
@@ -103,6 +110,19 @@
 					<form class="radio-navigation">
 						<h2 class="radio-header">Другие радиостанции</h2>
 						<ul class="radio-list">
+
+							<li class="radio-item">
+								<label>
+									<div class="radio-check">
+										<img class="radio-img" src="radio\nascheRadio.png" alt="обложка">
+									</div>
+									<input class="radio-btn" type="radio" id="nascheRadio" name="radioStantion"
+										data-radio-stantion="http://nashe1.hostingradio.ru/nashe-256">
+									<span class="radio-name">Наше радио</span>
+								</label>
+							</li>
+
+
 							<li class="radio-item">
 								<label>
 									<div class="radio-check">
@@ -175,6 +195,9 @@
 			</div>
 			<footer class="footer-fix radio-footer">
 				<button class="radio-stop fa fa-play"></button>
+				<span class="fa fa-volume-up radio-icon volume-up"></span>
+				<input type="range" class="radio-volume" min="0" max="100" step="1" value="100">
+				<span class="fa fa-volume-off radio-mute"></span>
 			</footer>
 		</article>
 	</main>

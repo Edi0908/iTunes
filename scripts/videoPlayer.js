@@ -1,3 +1,5 @@
+import { addZero } from './supScript.js';
+
 export const videoPlayerInit = () => {
 
   const videoPlayer = document.querySelector('.video-player'),
@@ -5,7 +7,12 @@ export const videoPlayerInit = () => {
     videoButtonStop = document.querySelector('.video-button__stop'),
     videoTimePassed = document.querySelector('.video-time__passed'),
     videoProgress = document.querySelector('.video-progress'),
-    videoTimeTotal = document.querySelector('.video-time__total');
+    videoTimeTotal = document.querySelector('.video-time__total'),
+    volumeMute = document.querySelector('.volume-mute'),
+    videoVolume = document.querySelector('.video-volume'),
+    videoFullscreen = document.querySelector('.video-fullscreen');
+
+  let prevVolume = 1;
 
   const toggleIcon = () => {
     if (videoPlayer.paused) {
@@ -32,8 +39,6 @@ export const videoPlayerInit = () => {
 
   };
 
-  const addZero = n => n < 10 ? '0' + n : n;
-
   videoPlayer.addEventListener('click', togglePlay);
   videoButtonPlay.addEventListener('click', togglePlay);
 
@@ -41,6 +46,27 @@ export const videoPlayerInit = () => {
   videoPlayer.addEventListener('pause', toggleIcon);
 
   videoButtonStop.addEventListener('click', stopPlay);
+
+  videoFullscreen.addEventListener('click', () => {
+    videoPlayer.requestFullscreen();
+  });
+
+  videoVolume.addEventListener('input', () => {
+    videoPlayer.volume = videoVolume.value / 100;
+    prevVolume = videoPlayer.volume;
+  });
+
+  videoPlayer.volume = 0.5;
+  videoVolume.value = videoPlayer.volume * 100;
+
+  volumeMute.addEventListener('click', () => {
+    if (videoPlayer.volume) {
+      prevVolume = videoPlayer.volume;
+      videoPlayer.volume = 0;
+    } else {
+      videoPlayer.volume = prevVolume;
+    }
+  });
 
   videoPlayer.addEventListener('timeupdate', () => {
     const currentTime = videoPlayer.currentTime;
